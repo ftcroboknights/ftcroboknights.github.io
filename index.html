@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDxPaceAcademy</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="aos.css">
+    <link rel="icon" type="image/x-icon" href="TXLOGO.ico">
+    <style>
+        .myslide {
+            width:100%;
+            height:auto;
+            max-height:800px;
+            display:none;
+            object-fit: cover;
+            border-radius: 50px 50px 0 0;
+        }
+        .mydivs {
+            display: none;
+            border-radius: 0 0 50px 50px;
+        }
+        .monkey {
+            border-radius: 0px 0px 25px 0px;
+        }
+        .btnn {
+            height:50px;
+            line-height: 30px;
+        }
+        body {
+            background-color: black;
+            
+            padding-top:5vh;
+            padding-left:5vw;
+            padding-right:5vw;
+        }
+        * {
+            font-family: Futura;
+        }
+        .okok {
+            height:60vh;
+            width:100%;
+            margin-top:20vh;
+            /*border:2px solid red;*/
+        }
+        @keyframes autoRotateAnimation {
+            from {
+                transform: rotate(150deg);
+            }
+            to {
+                transform: rotate(720deg);
+            }
+        }
+        @keyframes otherRotation {
+            from {
+                transform: rotate(100deg);
+            }
+            to {
+                transform: rotate(410deg);
+            }
+        }
+        .autoRotate {
+            /*margin-bottom: -70vh;*/
+            width:min(140px, 18vw);
+                /*margin-left:-300px;
+                margin-bottom:0vh;
+                position: absolute;
+                margin-top: -100px;*/
+                position: absolute;
+                transform: rotate(150deg);
+                left:min(-30vw, -400px);
+                right:0;
+                top:0vh;
+                margin:auto;
+        }
+        .autoRotate2 {
+            /*float:right;
+            /*margin-top:15vh;
+            /*margin-right:2vh;
+            margin-bottom: -70vh;*/
+            transform: rotate(30deg);
+            width:min(200px, 25vw);
+            position: absolute;
+            /*margin-right:-350px;
+            margin-top:-100px;*/
+            top:-3vh;
+            left:33vw;
+            right:0;
+            margin:auto;
+            
+        }
+        @supports (animation-timeline: view()) {
+            .autoRotate {
+                animation-name: autoRotateAnimation;
+                animation-timeline: view(auto 80%);
+            }
+            .autoRotate2 {
+                animation-name: otherRotation;
+                animation-timeline: view(auto 70%);
+            }
+            .autoblur {
+                animation: autobluranimation linear both;
+                animation-timeline: view(1% 1%);
+            }
+            @media (min-width: 700px) {
+                .autoblur {
+                animation: autobluranimation linear both;
+                animation-timeline: view(auto 50%);
+            }
+            }
+            @media (min-width: 1000px) {
+                .autoblur {
+                    animation: autobluranimation linear both;
+                    animation-timeline: view(auto 40%);
+            }
+            }
+        }
+        @keyframes autobluranimation {
+            0% {
+                filter: blur(40px);
+            }
+            35%, 65%{
+                filter: blur(0);
+            }
+            100% {
+                filter: blur(40px);
+            }
+        }
+        .tx-red {
+            background-color:#EB0028;
+        }
+        #demo a {
+            font-size: 2.7vw;
+        }
+        #sigbeat {
+            width: 80vw;
+        }
+        @media (min-width: 700px) {
+            #sigbeat {
+                width: 60vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <div class="w3-top" style="margin-left:-5vw;margin-right:-5vw">
+        <div class="w3-bar w3-black" style="border-bottom: 2px solid red">
+            <img src="TXLOGO.png" class="w3-bar-item" width="50px" height="50px">
+            <div class="w3-bar-item btnn" style="font-size: 30px;margin-left:-25px;"><strong id="sigmaa">PaceAcademy</strong></div>
+            <a onclick="freaky()" class="w3-right w3-bar-item btnn w3-button w3-hover-dark-grey w3-hide-large">&#9776;</a>
+            <div class="w3-right">
+            <a href="index.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey tx-red">Home</a>
+            <a href="meettheteam.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">Meet the Team</a>
+            <a href="thisyrevent.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">This Year's Event</a>
+            <div class="w3-dropdown-click w3-hide-small w3-hide-medium" style="margin-right:50px;">
+                <a onclick="myContFunc()" class="w3-button btnn w3-hover-dark-grey">Past Events &darr;</a>
+                <div class="w3-dropdown-content w3-center w3-bar-block w3-card-4" id="mycontent" style="color:white;border: 2px solid red;border-radius:0px 0px 0px 50px;border-top:none;border-right:none;max-height:80vh;overflow-y: auto;">
+                    <a href="tlt.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Little Things (Fall 2025)</a>
+                    <a href="lwl.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">Living With Love (Fall 2024)</a>
+                    <a href="did.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">Do I Dare? (Fall 2023)</a>
+                    <a href="gbtg.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Game Behind the Game (Fall 2022)</a>
+                    <a href="fow.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Force of Words (Fall 2021)</a>
+                    <a href="csq.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;border-radius:0px 0px 0px 50px;">Challenging the Status Quo (Spring 2021)</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="demo" style="max-height:80vh;overflow-y:auto;background-color: black;margin-left:20vw;margin-right:20vw;border:2px solid red;border-radius:0px 0px 50px 50px;border-top:none" class="w3-hide w3-bar-block w3-hide-large">
+            <a href="meettheteam.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">Meet the Team</a>
+            <a href="thisyrevent.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">This Year's Event</a>
+                    <a href="tlt.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Little Things (Past Event, Fall 2025)</a>
+                    <a href="lwl.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">Living With Love (Past Event, Fall 2024)</a>
+                    <a href="did.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">Do I Dare? (Past Event, Fall 2023)</a>
+                    <a href="gbtg.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Game Behind the Game (Past Event, Fall 2022)</a>
+                    <a href="fow.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Force of Words (Past Event, Fall 2021)</a>
+                    <a href="csq.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;border-radius:0px 0px 50px 50px;padding:20px">Challenging the Status Quo (Past Event, Spring 2021)</a>
+        </div>
+    </div>
+    <!--
+    <div class="w3-center w3-container okok"></div>
+-->
+    <!-- Video Section -->
+    <div class="" style="margin-left: -5vw; width:100vw;" data-aos="zoom-in">
+        <button id="unmuter" onclick="unmuteVideo()" style="border-bottom-right-radius: 20px; border-color: transparent; cursor: pointer; box-shadow: none; position: absolute; z-index: 999; width: 20vh; color: white; background-color: black;">Unmute</button>
+        <video id="videograph"
+            style="
+                width:100%;
+                border-radius:none;
+                box-shadow:0 20px 50px rgba(0,0,0,0.45);
+                background:black;"
+            autoplay
+            playsinline
+            muted
+            loop
+            poster="tedxvideologo.png"
+            controlslist="nodownload noplaybackrate nofullscreen"
+            preload="metadata">
+            <source src="TheLittleThingsTEDx.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    
+
+    <div class="w3-center w3-container" style="position:relative" data-aos="fade-up" data-aos-offset="-700">
+        <h1 style="font-size:50px;position: relative;z-index: 50;"><b><span style="color:red;">TEDx</span><span style="color:white;" id="changeme">PaceAcademy</span></b></h1>
+        <img src="puzzlepiece.png" class="autoRotate">
+        <img src="redpp.png" class="autoRotate2">
+    </div>
+    <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
+        <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
+    </div>
+    
+
+    <div id="sigbeat" class="w3-container w3-center" style="margin-left:auto;margin-right:auto;z-index:99">
+
+        <h2 style="color:#EB0028;text-align:left;margin-bottom:5vh;margin-top:5vh;font-family: Futura;" data-aos="flip-right" data-aos-offset="-700">As an Organization, TEDx is...</h2>
+        <p style="color:white;text-align: left;margin-bottom:5vh;line-height: 35px;" data-aos="flip-left" data-aos-offset="-700">a grassroots initiative, created in the spirit of TED’s overall mission to research and discover “ideas worth spreading.” TEDx brings the spirit of TED to local communities around the globe through TEDx events. These events are organized by passionate individuals who seek to uncover new ideas and to share the latest research in their local areas that spark conversations in their communities. TEDx events include live speakers and recorded TED Talks, and are organized independently under a free license granted by TED. These events are not controlled by TED, but event organizers agree to abide by our format, and are offered guidelines for curation, speaker coaching, event organizing and more. They learn from us and from each other. More than 3000 events are now held annually.</p>
+        <h2 style="color:#EB0028;text-align: left;margin-bottom:5vh;font-family: Futura;" data-aos="flip-up" data-aos-offset="-700">At Pace Academy, in the fall of 2019,</h2>
+        <p style="color:white;text-align: left;margin-bottom:5vh;line-height: 35px;" data-aos="flip-down" data-aos-offset="-700">Michael Fu '21 approached his English teacher, Robert Kaufman, about the idea of potentially organizing a TEDx event at Pace Academy together. Neither Fu nor Kaufman knew what co-organizing TEDx entailed, but since both had an aspiration to put on a TEDx event to promote ideas worth spreading, they began planning the first TEDxPaceAcademy event for the spring of 2020. Covid-19 pushed the inaugural event entitled, "Challenging the Status Quo", to the spring of 2021. After the success of the first event, Kaufman began organizing the second TEDxPaceAcademy event ("The Force of Words") for the fall of 2021 with Emma Beth Neville '23 and Marit UyHam '23. Claire Jiang '25 and Davis Rice '23 co-organized the third event ("The Game Behind the Game") with Kaufman in the fall of 2022. And Martin Andra-Thomas '24, Harper Auchincloss '25, and Kate Grice '25 co-organized the fourth event ("Do I Dare?") in the fall of 2023. Thanks to extraordinary support from Fred Assaf, Chad Wabrek, Scott Sargent, Eric Forslund, and many others, TEDx has been able to continue improving and making a new program with different speakers each year.</p>
+
+    </div>
+    <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
+        <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
+    </div>
+    <!--Slideshow-->
+    <br><br>
+    <div class="w3-content w3-display-container w3-center" style="width:100%;" data-aos="fade-up" data-aos-offset="-700">
+        <div class="w3-display-container">
+            <img src="allie.jpg" class="myslide">
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white">Allie Campbell delivers her speech at the "Force of Words"</div>
+        </div>
+        
+        <div class="w3-display-container">
+            <img src="baggies.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Emma Beth Neville prepares goodie bags ahead of the "Force of Words" event</div>
+        <div class="w3-display-container">
+            <img src="COOL.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Pace Alum and renown photographer Kristi Odom delivers her speech at the "Force of Words" talk</div>
+        <div class="w3-display-container">
+            <img src="coolhair.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Carlos Andrés Gómez delivers his speech at the "Challenging the Status Quo" talk</div>
+        <div class="w3-display-container">
+            <img src="coveed.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Group photo of the "Challenging the Status Quo" leaders and speakers after the event</div>
+        <div class="w3-display-container">
+            <img src="dannyy.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">NFL quarterback Danny Weurffel delivers his speech at the "Force of Words" talk</div>
+        <div class="w3-display-container">
+            <img src="forceowords.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Group photo of the "Force of Words" leaders and speakers before the event</div>
+        <div class="w3-display-container">
+            <img src="funtimes.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">TEDx committee members paint the banner in preparation for the "Game Behind the Game" event</div>
+        <div class="w3-display-container">
+            <img src="groupie.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Photo of the "Game Behind the Game" leaders and speakers</div>
+        <div class="w3-display-container">
+            <img src="happygeis.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Emma Killian and Allie Campbell deliver their speech at the "Force of Words" talk</div>
+        <div class="w3-display-container">
+            <img src="HARDESTY.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">John Hardesty delivers his speech at the "Game Behind the Game" talk</div>
+        <div class="w3-display-container">
+            <img src="himothy.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Davis Rice shows his process for coming up with a banner for the "Game Behind the Game" event</div>
+        <div class="w3-display-container">
+            <img src="kaufspeech.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Faculty leader of TEDx, Robert Kaufman, kicks off the talk</div>
+        <div class="w3-display-container">
+            <img src="kiddos.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Jayden Middleton and Ansley Kirbo introduce Leah Negero at the "Game Behind the Game"</div>
+        <div class="w3-display-container">
+            <img src="lockedin.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Claire Jiang helps design a painting for the "Game Behind the Game" event</div>
+        <div class="w3-display-container">
+            <img src="massivegroup.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Group photo of the "Do I Dare" leaders and speakers</div>
+        <div class="w3-display-container">
+            <img src="pastorbrown.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Pace Faculty Member Joanne Beauvoir Brown delivers her speech at the "Force of Words" talk</div>
+        <div class="w3-display-container">
+            <img src="romero.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Kate Romero delivers her speech at the "Force of Words"</div>
+        <div class="w3-display-container">
+            <img src="schiff.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Pace Alum Drew Schiffer delivers his speech at the "Game Behind the Game" talk</div>
+        <div class="w3-display-container">
+            <img src="uyham.jpg" class="myslide">
+        </div>
+        <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Marit UyHam introduces the speakers for the "Force of Words" talk</div>
+        <button class="w3-button w3-display-left w3-black" style="height:50%;opacity: 0.5;border-radius: 0 50px 50px 0;" onclick="changepic(-1)">&#10094;</button>
+        <button style="height:50%;opacity: 0.5;border-radius:50px 0 0 50px" class="w3-button w3-display-right w3-black" onclick="changepic(1)">&#10095;</button>
+        <div class="w3-display-topleft w3-container w3-padding-16 w3-black monkey" id="currentslidenum">1 / 20</div>
+    </div>
+    <br>
+    <br>
+    <script>
+        var slideindex = 1;
+        showpic(slideindex);
+
+        function changepic(num) {
+            slideindex += num;
+            showpic(slideindex);
+        }
+
+        function showpic(num) {
+            var i;
+            var imgs = document.getElementsByClassName("myslide");
+            var midivs = document.getElementsByClassName("mydivs");
+            if (num > imgs.length) {
+                slideindex = 1;
+            }
+            if (num < 1) {
+                slideindex = imgs.length;
+            }
+            for (i=0;i<imgs.length;i++) {
+                imgs[i].style.display = "none";
+                midivs[i].style.display = "none";
+            }
+            imgs[slideindex-1].style.display = "block";
+            midivs[slideindex-1].style.display = "block";
+
+            currentslidenum = document.getElementById("currentslidenum");
+            currentslidenum.innerHTML = slideindex + " / " + imgs.length;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 2000,
+        });
+    </script>
+        <script>
+        function myContFunc() {
+            var mystuff = document.getElementById("mycontent");
+            if (mystuff.className.indexOf("w3-show") == -1) {
+                mystuff.className += " w3-show";
+            }
+            else {
+                mystuff.className = mystuff.className.replace(" w3-show", "");
+                console.log("Received");
+            }
+        }
+        function freaky() {
+            var otrostuff = document.getElementById("demo");
+            if (otrostuff.className.indexOf("w3-show") == -1) {
+                otrostuff.className += " w3-show";
+            }
+            else {
+                otrostuff.className = otrostuff.className.replace(" w3-show", "");
+            }
+        }
+        function changeJ(listt) {
+            if (listt.matches){
+                document.getElementById("changeme").innerHTML = "PA";
+                Array.from(document.getElementsByClassName("autoRotate")).forEach(el => {
+                    el.style.left = "-30vw";
+                });
+                document.getElementById("sigmaa").innerHTML = "";
+            }
+            else {
+                document.getElementById("changeme").innerHTML = "PaceAcademy";
+                document.getElementById("sigmaa").innerHTML = "PaceAcademy";
+                Array.from(document.getElementsByClassName("autoRotate")).forEach(el => {
+                    el.style.left = "min(-30vw, -400px)";
+                });
+            }}
+
+        xx = window.matchMedia("(max-width:700px)");
+
+        changeJ(xx);
+
+        xx.addEventListener("change", function() {
+            changeJ(xx);
+        });
+    </script>
+    <script>
+        if (CSS.supports("animation-timeline: view()")) {
+            let brusz = document.getElementsByClassName("autoblur");
+            Array.from(brusz).forEach(element => {
+                element.removeAttribute("data-aos");
+            });
+        } else {
+            //
+        }
+
+        console.log(document.getElementById("videograph").muted)
+
+        function unmuteVideo() {
+            const vid = document.getElementById("videograph");
+            vid.muted = false;
+            console.log(vid.muted)
+            const unmuter = document.getElementById("unmuter");
+            unmuter.style.display = "none";
+        }
+    </script>
+</body>
+</html>

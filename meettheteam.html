@@ -1,0 +1,479 @@
+<!--TODO: Slideshow vs. Gallery View-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDxPaceAcademy</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="aos.css">
+    <link rel="icon" type="image/x-icon" href="TXLOGO.ico">
+    <style>
+        #demo a {
+            font-size: 2.7vw;
+        }
+        .myslide {
+            /*width:100%;
+            height:100%;
+            max-height:800px;*/
+            display:none;
+            /*object-fit: cover;*/
+        }
+        .mydivs {
+            display: none;
+            border-radius: 50px;
+        }
+        .monkey {
+            border-radius: 0px 0px 25px 0px;
+        }
+        .btnn {
+            height:50px;
+            line-height: 30px;
+        }
+        body {
+            background-color: black;
+            padding-top:5vh;
+        }
+        .okok {
+            height:60vh;
+            width:100%;
+            margin-top:20vh;
+            /*border:2px solid red;*/
+        }
+        @keyframes autoRotateAnimation {
+            from {
+                transform: rotate(150deg);
+            }
+            to {
+                transform: rotate(720deg);
+            }
+        }
+        @keyframes otherRotation {
+            from {
+                transform: rotate(100deg);
+            }
+            to {
+                transform: rotate(410deg);
+            }
+        }
+        .autoRotate {
+            animation-name: autoRotateAnimation;
+            animation-timeline: view(auto 3%);
+            /*margin-bottom: -70vh;*/
+            position: absolute;
+            transform: rotate(-30deg);
+            left: -50vw;
+            right: 0;
+            top: 0vh;
+            margin:auto;
+            width: 40vw;
+        }
+        .autoRotate2 {
+            animation-name: otherRotation;
+            animation-timeline: view(auto 2%);
+            /*float:right;
+            margin-top:15vh;
+            margin-right:5vh;
+            margin-bottom: -70vh;*/
+            transform: rotate(20deg);
+            position:absolute;
+            left: 50vw;
+            right: 0;
+            top:-3vh;
+            margin:auto;
+            width: 40vw;
+        }
+        @media (min-width: 900px) {
+            .autoRotate {
+                width: 20vw;
+            }
+            .autoRotate2 {
+                width: 20vw;
+            }
+        }
+        @keyframes autobluranimation {
+            0% {
+                filter: blur(40px);
+            }
+            35%, 65%{
+                filter: blur(0);
+            }
+            100% {
+                filter: blur(40px);
+            }
+        }
+        .autoblur {
+            animation: autobluranimation linear both;
+            animation-timeline: view(20% auto);
+        }
+        .tx-red {
+            background-color:#EB0028;
+        }
+        @keyframes autoshowanimation {
+            from {
+                opacity: 0;
+                transform: translateY(200px) scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @supports (animation-timeline: view()) {
+        .autoshow {
+            animation: autoshowanimation both;
+            animation-timeline: view();
+        }}
+        .checkers {
+            gap:8px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 600px) {
+            .checkers {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (min-width: 900px) {
+            .checkers {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        .gyat:hover {
+            background-color: #EB0028;
+        }
+        .checkers2 {
+            gap:8px;
+            grid-template-columns: 50vw;
+            justify-content: center;
+        }
+        .example img {
+            border-radius:2500px;
+        }
+        .example2 img {
+            border-radius:2500px;
+        }
+        * {
+            font-family: Futura;
+        }
+        h1, h2, h3, p, h4, h5, h6 {
+            font-family: Futura;
+        }
+    </style>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <div class="w3-top">
+        <div class="w3-bar w3-black" style="border-bottom: 2px solid red">
+            <img src="TXLOGO.png" class="w3-bar-item" width="50px" height="50px">
+            <div class="w3-bar-item btnn" style="font-size: 30px;margin-left:-25px;"><strong id="sigmaa">PaceAcademy</strong></div>
+            <a onclick="freaky()" class="w3-right w3-bar-item btnn w3-button w3-hover-dark-grey w3-hide-large">&#9776;</a>
+            <div class="w3-right">
+            <a href="index.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">Home</a>
+            <a href="meettheteam.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey tx-red">Meet the Team</a>
+            <a href="thisyrevent.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">This Year's Event</a>
+            <div class="w3-dropdown-click w3-hide-small w3-hide-medium" style="margin-right:50px;">
+                <a onclick="myContFunc()" class="w3-button btnn w3-hover-dark-grey">Past Events &darr;</a>
+                <div class="w3-dropdown-content w3-center w3-bar-block w3-card-4" id="mycontent" style="color:white;border: 2px solid red;border-radius:0px 0px 0px 50px;border-top:none;border-right:none;max-height:80vh;overflow-y: auto;">
+                    <a href="tlt.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Little Things (Fall 2025)</a>
+                    <a href="lwl.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">Living With Love (Fall 2024)</a>
+                    <a href="did.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">Do I Dare? (Fall 2023)</a>
+                    <a href="gbtg.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Game Behind the Game (Fall 2022)</a>
+                    <a href="fow.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">The Force of Words (Fall 2021)</a>
+                    <a href="csq.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;border-radius:0px 0px 0px 50px;">Challenging the Status Quo (Spring 2021)</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="demo" style="max-height:80vh;overflow-y: auto;background-color: black;margin-left:20vw;margin-right:20vw;border:2px solid red;border-radius:0px 0px 50px 50px;border-top:none" class="w3-hide w3-bar-block w3-hide-large">
+            <a href="index.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">Home</a>
+            <a href="thisyrevent.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">This Year's Event</a>
+            <a href="tlt.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Little Things (Past Event, Fall 2025)</a>        
+            <a href="lwl.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">Living With Love (Past Event, Fall 2024)</a>
+                    <a href="did.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">Do I Dare? (Past Event, Fall 2023)</a>
+                    <a href="gbtg.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Game Behind the Game (Past Event, Fall 2022)</a>
+                    <a href="fow.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">The Force of Words (Past Event, Fall 2021)</a>
+                    <a href="csq.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;border-radius:0px 0px 50px 50px;padding:20px">Challenging the Status Quo (Past Event, Spring 2021)</a>
+        </div>
+    </div>
+    <!--
+    <div class="w3-center w3-container okok"></div>
+    -->
+
+    
+    <div style="height:10vh;background-color: black"></div>
+    <div class="w3-center w3-container" data-aos="fade-down" style="width:100%;margin-bottom:10vh">
+        <h1 style="font-size:min(10vw, 70px);position:relative;z-index:9999;"><b><span style="color:white;">Meet</span><span style="color:red;"> the </span><span style="color:white">Team</span></b></h1>
+        <img src="teamphoto.jpg" class="autoRotate" style="z-index:1;border-radius:20px">
+        <img src="teamphoto2.jpg" class="autoRotate2" style="z-index:2;border-radius:20px">
+    </div>
+    <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
+        <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
+    </div>
+    <div class="w3-container w3-center" style="width:60vw;margin:auto;">
+        <h2 style="color:#EB0028;text-align:center;font-size:min(10vw,50px);position:relative" class="autoshow" data-aos="flip-down">The Executive Team</h2>
+    </div>
+    <div class="w3-display-container">
+    <div style="display:flex;justify-content: center;" data-aos="flip-down" class="autoshow">
+    <!--<button onclick="goes()" style="color:white;border-radius:25px" class="w3-center w3-button tx-red">Change Layout</button>--></div>
+    <div class="w3-grid checkers" id="otroexample" style="width:80vw;margin-left:auto;margin-right:auto;">
+        <div class="w3-padding w3-card autoshow example" data-aos="zoom-in"><img src="emmal.jpeg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Emma Alvarez '28</h1><h2 style="color:#EB0028">Co-Chair</h2></div></div>
+        <div class="w3-padding w3-card autoshow example" data-aos="zoom-in"><img src="kaufman.jpg" width="100%"><div class="w3-container w3-center" style="margin:auto"><h1 style="color:white">Robert Kaufman</h1><h2 style="color:#EB0028">Co-Chair</h2></div></div>
+        <div class="w3-padding w3-card autoshow example" data-aos="zoom-in"><img src="masonman.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Mason Pinkerton '28</h1><h2 style="color:#EB0028">Co-Chair</h2></div></div>
+    </div>
+    <!--<button class="w3-button w3-display-left w3-black boom w3-hide" style="height:50%;opacity: 0.5;border-radius: 0 50px 50px 0;" onclick="changepic(-1)">&#10094;</button>
+    <button style="height:50%;opacity: 0.5;border-radius:50px 0 0 50px" class="w3-hide boom w3-button w3-display-right w3-black" onclick="changepic(1)">&#10095;</button>-->
+    </div>
+    <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
+        <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
+    </div>
+    <div class="w3-container w3-center" style="width:60vw;margin:auto;">
+        <h2 style="color:#EB0028;text-align:center;font-size:min(10vw, 50px);margin-top: 3vh" class="autoshow" data-aos="flip-up">The Committee</h2>
+    </div>
+    <div class="w3-display-container">
+        <div style="display: flex;justify-content: center;" data-aos="flip-down" class="autoshow">
+            <!--<button onclick="goes2()" style="color:white;border-radius:25px" class="w3-center w3-button tx-red">Change Layout</button>--></div>
+    <div class="w3-grid checkers" id="otroexample2" style="width:80vw;margin-left:auto;margin-right:auto;">
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="grayden.jpeg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Grayden Auchincloss '28</h1><h2 style="color:#EB0028">Middle School Liaison</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="braylon.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Braylon Cambor '26</h1><h2 style="color:#EB0028">Team Member</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="maddie.jpeg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Madeleine Ganz '27</h1><h2 style="color:#EB0028">Lower School Liason</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="vivian.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Vivian Gerber '27</h1><h2 style="color:#EB0028">Team Member</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="avag.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Ava Grant '27</h1><h2 style="color:#EB0028">Social Media Director</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="johnhardesty.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">John Hardesty '26</h1><h4 style="color:#EB0028">Program Director | Senior Advisor/Consultant</h4></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="hailey.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Hailey Huang '28</h1><h2 style="color:#EB0028">Team Member</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="eddie.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Eddie Langford '26</h1><h2 style="color:#EB0028">Technical Director</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="kitty.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Kitty Lubin '27</h1><h2 style="color:#EB0028">Team Member</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="hiruni.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Hiruni Manawadu '28</h1><h2 style="color:#EB0028">Philanthropy Chair</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="masonman.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Mason Pinkerton '28</h1><h4 style="color:#EB0028">Website Developer/Manager | Creative Director</h4></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="bayli.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Bayli Richardson '27</h1><h2 style="color:#EB0028">Team Member</h2></div></div>        
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="romig.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Elizabeth Romig '28</h1><h2 style="color:#EB0028">Music Director</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="campbell.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Campbell Smith '28</h1><h2 style="color:#EB0028">Philanthropy Chair</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="james.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">James Smith '25</h1><h2 style="color:#EB0028">Senior Art Director</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="jonni.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Jonathan Stephens '28</h1><h2 style="color:#EB0028">Art/Video Director</h2></div></div>
+        <div class="w3-padding w3-card autoshow example2" data-aos="zoom-in"><img src="jonsoren.jpg" width="100%"><div class="w3-container w3-center"><h1 style="color:white">Jon Soren UyHam '26</h1><h2 style="color:#EB0028">Team Member</h2></div></div>
+    </div>
+    <!--<button class="w3-button w3-display-left w3-black boom2 w3-hide" style="height:50%;opacity: 0.5;border-radius: 0 50px 50px 0;" onclick="changepic2(-1)">&#10094;</button>
+    <button style="height:50%;opacity: 0.5;border-radius:50px 0 0 50px" class="w3-hide boom2 w3-button w3-display-right w3-black" onclick="changepic2(1)">&#10095;</button>-->
+    </div>
+    <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
+        <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
+    </div>
+    <div class="w3-container w3-center" style="width:60vw;margin:auto;">
+        <h6 style="color:#EB0028;text-align:center;font-size:45px">Not Pictured</h6>
+        <p style="color: white;text-align:left;font-size:25px">Teah Charkawi '26 - Coaching & Logistics Support | Speaker Liaison</p>
+        <p style="color: white;text-align:left;font-size:25px">Alex Eachus '27 - Communications Chair</p>
+        <p style="color: white;text-align:left;font-size:25px">Ben Gies '28 - Art/Video Director</p>
+    </div>
+    <br>
+    <br>
+    <script>
+
+        /*function changeJ(listt) {
+            if (listt.matches){
+                
+                document.getElementById("sigmaa").innerHTML = "";
+            }
+            else {
+                document.getElementById("sigmaa").innerHTML = "TEDxPaceAcademy";
+            }}
+
+        xxx = window.matchMedia("(max-width:700px)");
+
+        changeJ(xxx);
+
+        xxx.addEventListener("change", function() {
+            changeJ(xxx);
+        });
+
+        window.isSS = false;
+
+        function goes() {
+            console.log(window.isSS);
+            if (window.isSS) {
+                window.isSS = false;
+                bums = document.getElementsByClassName("example");
+                Array.from(bums).forEach(element => {
+                    element.classList.remove("bum");
+                    element.style.display="block";
+                });
+                booms = document.getElementsByClassName("boom");
+                Array.from(booms).forEach(element => {
+                    element.classList.add("w3-hide");
+                });
+                /*var slideindex = 1;
+                showpic(slideindex);
+                document.getElementById("otroexample").classList.add("checkers");
+                document.getElementById("otroexample").classList.remove("checkers2");
+            } else {
+                window.isSS = true;
+                
+                bums = document.getElementsByClassName("example");
+                Array.from(bums).forEach(element => {
+                    element.classList.add("bum");
+                });
+                booms = document.getElementsByClassName("boom");
+                Array.from(booms).forEach(element => {
+                    element.classList.remove("w3-hide");
+                });
+                slideindex = 1;
+                showpic(slideindex);
+                document.getElementById("otroexample").classList.remove("checkers");
+                document.getElementById("otroexample").classList.add("checkers2");
+            }
+        }
+
+        slideindex = 1;
+        showpic(slideindex);
+
+        function changepic(num) {
+            slideindex += num;
+            showpic(slideindex);
+        }
+
+        function showpic(num) {
+            var i;
+            imgs = document.getElementsByClassName("bum");
+            console.log(imgs.length);
+            midivs = document.getElementsByClassName("mydivs");
+            if (num > imgs.length) {
+                slideindex = 1;
+            }
+            if (num < 1) {
+                slideindex = imgs.length;
+            }
+            for (i=0;i<imgs.length;i++) {
+                imgs[i].style.display = "none";
+                //midivs[i].style.display = "none";
+            }
+            console.log(slideindex);
+            imgs[slideindex-1].style.display = "block";
+            //midivs[slideindex-1].style.display = "block";
+
+            //currentslidenum = document.getElementById("currentslidenum");
+            //currentslidenum.innerHTML = slideindex + " / " + imgs.length;
+        }*/
+
+        /*window.isSS2 = false;
+
+        function goes2() {
+            console.log(window.isSS2);
+            if (window.isSS2) {
+                window.isSS2 = false;
+                bums2 = document.getElementsByClassName("example2");
+                Array.from(bums2).forEach(element => {
+                    element.classList.remove("bum2");
+                    element.style.display="block";
+                });
+                booms2 = document.getElementsByClassName("boom2");
+                Array.from(booms2).forEach(element => {
+                    element.classList.add("w3-hide");
+                });
+                /*var slideindex2 = 1;
+                showpic2(slideindex2);
+                document.getElementById("otroexample2").classList.add("checkers");
+                document.getElementById("otroexample2").classList.remove("checkers2");
+            } else {
+                window.isSS2 = true;
+                
+                bums2 = document.getElementsByClassName("example2");
+                Array.from(bums2).forEach(element => {
+                    element.classList.add("bum2");
+                });
+                booms2 = document.getElementsByClassName("boom2");
+                Array.from(booms2).forEach(element => {
+                    element.classList.remove("w3-hide");
+                });
+                slideindex2 = 1;
+                showpic2(slideindex2);
+                document.getElementById("otroexample2").classList.remove("checkers");
+                document.getElementById("otroexample2").classList.add("checkers2");
+            }
+        }
+
+        slideindex2 = 1;
+        showpic2(slideindex2);
+
+        function changepic2(num2) {
+            slideindex2 += num2;
+            showpic2(slideindex2);
+        }
+
+        function showpic2(num2) {
+            var i2;
+            imgs2 = document.getElementsByClassName("bum2");
+            console.log(imgs2.length);
+            midivs2 = document.getElementsByClassName("mydivs2");
+            if (num2 > imgs2.length) {
+                slideindex2 = 1;
+            }
+            if (num2 < 1) {
+                slideindex2 = imgs2.length;
+            }
+            for (i2=0;i2<imgs2.length;i2++) {
+                imgs2[i2].style.display = "none";
+                //midivs[i].style.display = "none";
+            }
+            console.log(slideindex2);
+            imgs2[(slideindex2)-1].style.display = "block";
+            //midivs[slideindex-1].style.display = "block";
+
+            //currentslidenum = document.getElementById("currentslidenum");
+            //currentslidenum.innerHTML = slideindex + " / " + imgs.length;*/
+        //}
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 2000,
+        });
+    </script>
+        <script>
+        function myContFunc() {
+            var mystuff = document.getElementById("mycontent");
+            if (mystuff.className.indexOf("w3-show") == -1) {
+                mystuff.className += " w3-show";
+            }
+            else {
+                mystuff.className = mystuff.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+    <script>
+        function freaky() {
+            var mybruzz = document.getElementById("demo");
+            if (mybruzz.className.indexOf("w3-show") == -1) {
+                mybruzz.className += " w3-show";
+            }
+            else {
+                mybruzz.className = mybruzz.className.replace(" w3-show", "");
+            }
+        }
+        function changeJ(listt) {
+            if (listt.matches){
+                
+                document.getElementById("sigmaa").innerHTML = "";
+            }
+            else {
+                document.getElementById("sigmaa").innerHTML = "PaceAcademy";
+            }}
+
+        xx = window.matchMedia("(max-width:700px)");
+
+        changeJ(xx);
+
+        xx.addEventListener("change", function() {
+            changeJ(xx);
+        });
+    </script>
+    <script>
+        if (CSS.supports("animation-timeline: view()")) {
+            let brusz = document.getElementsByClassName("autoshow");
+            Array.from(brusz).forEach(element => {
+                element.removeAttribute("data-aos");
+            });
+        } else {
+            //
+        }
+    </script>
+</body>
+</html>
