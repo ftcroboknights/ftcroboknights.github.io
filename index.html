@@ -146,6 +146,7 @@
     <!--Navigation Bar-->
     <div class="w3-top" style="margin-left:-5vw;margin-right:-5vw">
         <div class="w3-bar w3-black" style="border-bottom: 2px solid red">
+            <img class="w3-bar-item" src="images/ftc_logo.png" width="50px" height="50px">
             <div class="w3-bar-item btnn" style="font-size: 30px;margin-left:0px;"><strong id="sigmaa"></strong></div>
             <a onclick="freaky()" class="w3-right w3-bar-item btnn w3-button w3-hover-dark-grey w3-hide-large">&#9776;</a>
             <div class="w3-right">
@@ -283,7 +284,7 @@
         }
         function changeJ(listt) {
             if (listt.matches){
-                document.getElementById("changeme").innerHTML = "PA";
+                document.getElementById("changeme").innerHTML = "Ping 112";
                 Array.from(document.getElementsByClassName("autoRotate")).forEach(el => {
                     el.style.left = "-30vw";
                 });
@@ -291,7 +292,7 @@
             }
             else {
                 document.getElementById("changeme").innerHTML = "Ping 112";
-                document.getElementById("sigmaa").innerHTML = "FTC RoboKnights #112";
+                document.getElementById("sigmaa").innerHTML = "RoboKnights #112";
                 Array.from(document.getElementsByClassName("autoRotate")).forEach(el => {
                     el.style.left = "min(-30vw, -400px)";
                 });
