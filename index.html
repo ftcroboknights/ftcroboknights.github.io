@@ -127,7 +127,7 @@
             }
         }
         .tx-red {
-            background-color:#EB0028;
+            background-color: white;
         }
         #demo a {
             font-size: 2.7vw;
@@ -140,28 +140,34 @@
                 width: 60vw;
             }
         }
+        .grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <!--Navigation Bar-->
     <div class="w3-top" style="margin-left:-5vw;margin-right:-5vw">
-        <div class="w3-bar w3-black" style="border-bottom: 2px solid red">
+        <div class="w3-bar w3-black" style="border-bottom: 2px solid white">
             <img class="w3-bar-item" src="images/ftc_logo.png" width="50px" height="50px">
             <div class="w3-bar-item btnn" style="font-size: 30px;margin-left:0px;"><strong id="sigmaa"></strong></div>
             <a onclick="freaky()" class="w3-right w3-bar-item btnn w3-button w3-hover-dark-grey w3-hide-large">&#9776;</a>
             <div class="w3-right">
-            <a href="index.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey tx-red">Home</a>
+            <a href="index.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey tx-red" style="color: black">Home</a>
             <a href="meettheteam.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">Meet the Team</a>
             <a href="progress.html" class="w3-bar-item w3-button btnn w3-hover-dark-grey w3-hide-small w3-hide-medium">Progress</a>
             <div class="w3-dropdown-click w3-hide-small w3-hide-medium" style="margin-right:50px;">
                 <a onclick="myContFunc()" class="w3-button btnn w3-hover-dark-grey">Past Seasons &darr;</a>
-                <div class="w3-dropdown-content w3-center w3-bar-block w3-card-4" id="mycontent" style="color:white;border: 2px solid red;border-radius:0px 0px 0px 50px;border-top:none;border-right:none;max-height:80vh;overflow-y: auto;">
+                <div class="w3-dropdown-content w3-center w3-bar-block w3-card-4" id="mycontent" style="color:white;border: 2px solid white;border-radius:0px 0px 0px 50px;border-top:none;border-right:none;max-height:80vh;overflow-y: auto;">
                     <a href="decode.html" class="w3-button w3-bar-item w3-hover-dark-grey" style="background-color: black;">DECODE Season (2025)</a>
                 </div>
             </div>
             </div>
         </div>
-        <div id="demo" style="max-height:80vh;overflow-y:auto;background-color: black;margin-left:20vw;margin-right:20vw;border:2px solid red;border-radius:0px 0px 50px 50px;border-top:none" class="w3-hide w3-bar-block w3-hide-large">
+        <div id="demo" style="max-height:80vh;overflow-y:auto;background-color: black;margin-left:20vw;margin-right:20vw;border:2px solid white;border-radius:0px 0px 50px 50px;border-top:none" class="w3-hide w3-bar-block w3-hide-large">
             <a href="meettheteam.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">Meet the Team</a>
             <a href="progress.html" class="w3-bar-item w3-button w3-hover-dark-grey w3-center" style="color:white;padding:20px">Progress</a>
             <a href="decode.html" class="w3-button w3-bar-item w3-hover-dark-grey w3-center" style="color:white;padding:20px">DECODE (2025)</a>
@@ -179,16 +185,12 @@
     <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
         <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
     </div>
-    
-    <div style="color: red; width: 100vw; text-align: center; margin-left: -5vw">
-        <button>Contact Us!</button>
-    </div>
 
     <div id="sigbeat" class="w3-container w3-center" style="margin-left:auto;margin-right:auto;z-index:99">
 
-        <h2 style="color:#EB0028;text-align:left;margin-bottom:5vh;margin-top:5vh;font-family: Futura;" data-aos="flip-right" data-aos-offset="-700">Who Are We?</h2>
+        <h2 style="color: white;text-align:left;margin-bottom:5vh;margin-top:5vh;font-family: Futura;" data-aos="flip-right" data-aos-offset="-700">Who Are We?</h2>
         <p style="color:white;text-align: left;margin-bottom:5vh;line-height: 35px;" data-aos="flip-left" data-aos-offset="-700">...</p>
-        <h2 style="color:#EB0028;text-align: left;margin-bottom:5vh;font-family: Futura;" data-aos="flip-up" data-aos-offset="-700">[OTHER]</h2>
+        <h2 style="color:white;text-align: left;margin-bottom:5vh;font-family: Futura;" data-aos="flip-up" data-aos-offset="-700">[OTHER]</h2>
         <p style="color:white;text-align: left;margin-bottom:5vh;line-height: 35px;" data-aos="flip-down" data-aos-offset="-700">...</p>
 
     </div>
@@ -200,52 +202,52 @@
     <div class="w3-content w3-display-container w3-center" style="width:100%;" data-aos="fade-up" data-aos-offset="-700">
         <div class="w3-display-container">
             <img src="images/IMG_6037.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white">Prototype model is disassembled</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black">Prototype model is disassembled</div>
         </div>
         
         <div class="w3-display-container">
             <img src="images/IMG_6402.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Early Victories | After a few matches, we earn a reputation by making our way to the first place spot. We hang on to at least a top 10 spot for the rest of the season</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Early Victories | After a few matches, we earn a reputation by making our way to the first place spot. We hang on to at least a top 10 spot for the rest of the season</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_6470.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Ben and JJ disassemble the robot to identify a wiring issue</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Ben and JJ disassemble the robot to identify a wiring issue</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7184.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Mason shows his appreciation for our sponsor, Polymaker</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Mason shows his appreciation for our sponsor, Polymaker</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7185.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Strong win shows our ability to compete at a high level</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Strong win shows our ability to compete at a high level</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7186.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Another excellent win</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Another excellent win</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7187.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">The team prepares to take on a match with Delta T, one of Georgia's top FTC teams</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">The team prepares to take on a match with Delta T, one of Georgia's top FTC teams</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7188.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">The team prepares for a robot inspection</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">The team prepares for a robot inspection</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7189.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">The team celebrates a successful first competition, with a 4-1 record</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">The team celebrates a successful first competition, with a 4-1 record</div>
         </div>
 
         <div class="w3-display-container">
             <img src="images/IMG_7191.jpg" class="myslide">
-            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:white;">Eventful allyship with BNI</div>
+            <div class="w3-container w3-padding-16 tx-red mydivs" style="color:black;">Eventful allyship with BNI</div>
         </div>
         
         <button class="w3-button w3-display-left w3-black" style="height:50%;opacity: 0.5;border-radius: 0 50px 50px 0;" onclick="changepic(-1)">&#10094;</button>
@@ -257,10 +259,11 @@
     <div class="w3-center w3-container" style="position:relative;z-index:-1;margin-left:auto;margin-right:auto;margin-top:2vh;width:60vw;left:0;top:0;right:0;">
         <div style="background-color:white;height:0.1vh;border-radius:50px"></div>
     </div>
-    <div class="contact" style="width: 100vw; margin-left: -5vw; color: red; text-align: center;">
+    <div class="contact" id="contact" style="display: flex; width: 100vw; margin-left: -5vw; color: white; text-align: center; align-items: center;justify-content: center;flex-direction: column;column-gap: 2px;">
         <h1>Contact Us!</h1>
-        <div class="grid" style="width: 100vw; margin-left: -5vw;">
-            Email: 
+        <div class="grid">
+            <p>Email: paceroboknights15290@gmail.com</p>
+            <a href="https://www.instagram.com/roboknights15290/" target="_blank">Instagram</a>
         </div>
     </div>
     <script>
